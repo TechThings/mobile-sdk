@@ -1,0 +1,11 @@
+framework module ExperianMobileSDK {
+  umbrella header "ExperianMobileSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module ExperianMobileSDK.Swift {
+    header "ExperianMobileSDK-Swift.h"
+    requires objc
+}

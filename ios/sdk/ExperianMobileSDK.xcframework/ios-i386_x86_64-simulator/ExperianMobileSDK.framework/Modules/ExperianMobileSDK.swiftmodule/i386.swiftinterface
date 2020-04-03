@@ -1,0 +1,838 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target i386-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ExperianMobileSDK
+import AdSupport
+import SystemConfiguration.CaptiveNetwork
+import CommonCrypto
+import Compression
+import Contacts
+import CoreBluetooth
+import CoreFoundation
+import CoreGraphics
+import CoreLocation
+import CoreMotion
+import CoreTelephony
+import EventKit
+@_exported import ExperianMobileSDK
+import Foundation
+import HealthKit
+import HomeKit
+import MediaPlayer
+import Photos
+import Security
+import StoreKit
+import Swift
+import SystemConfiguration
+import UIKit
+import zlib
+public struct Rect {
+  public init(min: ExperianMobileSDK.Vector, max: ExperianMobileSDK.Vector)
+}
+extension Rect {
+  public func intersection(with rect: ExperianMobileSDK.Rect) -> ExperianMobileSDK.Vector?
+}
+public class EncryptedMessage : ExperianMobileSDK.Message {
+  final public let data: Foundation.Data
+  required public init(data: Foundation.Data)
+  @objc deinit
+}
+public enum SensitiveDataPolicy : Swift.String {
+  case hash
+  case plain
+  case skip
+  case undefined
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class DataPolicy {
+  public static let shared: ExperianMobileSDK.DataPolicy
+  @objc deinit
+}
+public struct NetworkInfo : ExperianMobileSDK.Serializable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public class PNGSteganographyEncrypter {
+  public func decrypt(encryptedBytes: [Swift.UInt8]) -> [Swift.UInt8]
+  @objc deinit
+}
+extension Array {
+  public subscript(safe index: Swift.Int) -> Element {
+    get
+  }
+}
+@objc(PublicKey) public class _objc_PublicKey : ObjectiveC.NSObject, ExperianMobileSDK.Key {
+  @objc public var reference: Security.SecKey {
+    @objc get
+  }
+  @objc public var originalData: Foundation.Data? {
+    @objc get
+  }
+  @objc public func pemString() throws -> Swift.String
+  @objc public func data() throws -> Foundation.Data
+  @objc public func base64String() throws -> Swift.String
+  required public init(swiftValue: ExperianMobileSDK.PublicKey)
+  @objc required public init(data: Foundation.Data) throws
+  @objc required public init(reference: Security.SecKey) throws
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc required public init(pemEncoded pemString: Swift.String) throws
+  @objc required public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
+  @objc required public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
+  @objc public static func publicKeys(pemEncoded pemString: Swift.String) -> [ExperianMobileSDK._objc_PublicKey]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(VerificationResult) public class _objc_VerificationResult : ObjectiveC.NSObject {
+  @objc final public let isSuccessful: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(ClearMessage) public class _objc_ClearMessage : ObjectiveC.NSObject, ExperianMobileSDK.Message {
+  @objc public var base64String: Swift.String {
+    @objc get
+  }
+  @objc public var data: Foundation.Data {
+    @objc get
+  }
+  required public init(swiftValue: ExperianMobileSDK.ClearMessage)
+  @objc required public init(data: Foundation.Data)
+  @objc required public init(string: Swift.String, using rawEncoding: Swift.UInt) throws
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc public func string(encoding rawEncoding: Swift.UInt) throws -> Swift.String
+  @objc public func encrypted(with key: ExperianMobileSDK._objc_PublicKey, padding: ExperianMobileSDK.Padding) throws -> ExperianMobileSDK._objc_EncryptedMessage
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(EncryptedMessage) public class _objc_EncryptedMessage : ObjectiveC.NSObject, ExperianMobileSDK.Message {
+  @objc public var base64String: Swift.String {
+    @objc get
+  }
+  @objc public var data: Foundation.Data {
+    @objc get
+  }
+  required public init(swiftValue: ExperianMobileSDK.EncryptedMessage)
+  @objc required public init(data: Foundation.Data)
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(Signature) public class _objc_Signature : ObjectiveC.NSObject {
+  @objc public enum DigestType : Swift.Int {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public var base64String: Swift.String {
+    @objc get
+  }
+  @objc public var data: Foundation.Data {
+    @objc get
+  }
+  required public init(swiftValue: ExperianMobileSDK.Signature)
+  @objc public init(data: Foundation.Data)
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class ClearMessage : ExperianMobileSDK.Message {
+  final public let data: Foundation.Data
+  required public init(data: Foundation.Data)
+  convenience public init(string: Swift.String, using encoding: Swift.String.Encoding) throws
+  public func string(encoding: Swift.String.Encoding) throws -> Swift.String
+  public func encrypted(with key: ExperianMobileSDK.PublicKey, padding: ExperianMobileSDK.Padding) throws -> ExperianMobileSDK.EncryptedMessage
+  @objc deinit
+}
+public class ObfuscatedEncrypter {
+  @objc deinit
+}
+public class DLabLogger {
+  @objc deinit
+}
+public enum LogLevel : Swift.Int {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct Ray {
+  public var origin: ExperianMobileSDK.Vector, direction: ExperianMobileSDK.Vector
+  public init(origin: ExperianMobileSDK.Vector, direction: ExperianMobileSDK.Vector)
+}
+extension Archive {
+  final public func addEntry(with path: Swift.String, relativeTo baseURL: Foundation.URL, compressionMethod: ExperianMobileSDK.CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil) throws
+  final public func addEntry(with path: Swift.String, type: ExperianMobileSDK.Entry.EntryType, uncompressedSize: Swift.UInt32, modificationDate: Foundation.Date = Date(), permissions: Swift.UInt16? = nil, compressionMethod: ExperianMobileSDK.CompressionMethod = .none, bufferSize: Swift.UInt32 = defaultWriteChunkSize, progress: Foundation.Progress? = nil, provider: (Swift.Int, Swift.Int) throws -> Foundation.Data) throws
+  final public func remove(_ entry: ExperianMobileSDK.Entry, bufferSize: Swift.UInt32 = defaultReadChunkSize, progress: Foundation.Progress? = nil) throws
+}
+public class JsonStringfy {
+  @objc deinit
+}
+public let defaultReadChunkSize: Swift.UInt32
+public let defaultWriteChunkSize: Swift.UInt32
+public let defaultFilePermissions: Swift.UInt16
+public let defaultDirectoryPermissions: Swift.UInt16
+public enum CompressionMethod : Swift.UInt16 {
+  case none
+  case deflate
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
+    get
+  }
+  public init?(rawValue: Swift.UInt16)
+}
+final public class Archive : Swift.Sequence {
+  public enum ArchiveError : Swift.Error {
+    case unreadableArchive
+    case unwritableArchive
+    case invalidEntryPath
+    case invalidCompressionMethod
+    case invalidStartOfCentralDirectoryOffset
+    case missingEndOfCentralDirectoryRecord
+    case cancelledOperation
+    public static func == (a: ExperianMobileSDK.Archive.ArchiveError, b: ExperianMobileSDK.Archive.ArchiveError) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public enum AccessMode : Swift.UInt {
+    case create
+    case read
+    case update
+    public typealias RawValue = Swift.UInt
+    public init?(rawValue: Swift.UInt)
+    public var rawValue: Swift.UInt {
+      get
+    }
+  }
+  final public let url: Foundation.URL
+  final public let accessMode: ExperianMobileSDK.Archive.AccessMode
+  public init?(url: Foundation.URL, accessMode mode: ExperianMobileSDK.Archive.AccessMode)
+  @objc deinit
+  final public func makeIterator() -> Swift.AnyIterator<ExperianMobileSDK.Entry>
+  final public subscript(path: Swift.String) -> ExperianMobileSDK.Entry? {
+    get
+  }
+  public typealias Element = ExperianMobileSDK.Entry
+  public typealias Iterator = Swift.AnyIterator<ExperianMobileSDK.Entry>
+}
+extension Archive {
+  final public func totalUnitCountForRemoving(_ entry: ExperianMobileSDK.Entry) -> Swift.Int64
+  final public func totalUnitCountForReading(_ entry: ExperianMobileSDK.Entry) -> Swift.Int64
+  final public func totalUnitCountForAddingItem(at url: Foundation.URL) -> Swift.Int64
+}
+public class RequestBuilder {
+  @objc deinit
+}
+extension RequestBuilder {
+  public static func post(_ url: Swift.String) throws -> ExperianMobileSDK.RequestBuilder
+  public static func get(_ url: Swift.String) throws -> ExperianMobileSDK.RequestBuilder
+  public static func put(_ url: Swift.String) throws -> ExperianMobileSDK.RequestBuilder
+  public static func delete(_ url: Swift.String) throws -> ExperianMobileSDK.RequestBuilder
+}
+extension RequestBuilder {
+  public func header(_ name: Swift.String, value: Swift.String) -> ExperianMobileSDK.RequestBuilder
+  public var request: Foundation.URLRequest {
+    get
+  }
+}
+public struct Bitmap {
+  public var pixels: [ExperianMobileSDK.Color] {
+    get
+    }
+  public let width: Swift.Int
+  public init(width: Swift.Int, pixels: [ExperianMobileSDK.Color])
+}
+extension Bitmap {
+  public var height: Swift.Int {
+    get
+  }
+  public subscript(x: Swift.Int, y: Swift.Int) -> ExperianMobileSDK.Color {
+    get
+    set
+  }
+  public subscript(normalized x: Swift.Double, y: Swift.Double) -> ExperianMobileSDK.Color {
+    get
+  }
+  public init(width: Swift.Int, height: Swift.Int, color: ExperianMobileSDK.Color)
+  mutating public func fill(rect: ExperianMobileSDK.Rect, color: ExperianMobileSDK.Color)
+  mutating public func drawLine(from: ExperianMobileSDK.Vector, to: ExperianMobileSDK.Vector, color: ExperianMobileSDK.Color)
+  mutating public func drawColumn(_ sourceX: Swift.Int, of source: ExperianMobileSDK.Bitmap, at point: ExperianMobileSDK.Vector, height: Swift.Double)
+}
+public struct Input {
+  public var speed: Swift.Double
+  public var rotation: ExperianMobileSDK.Rotation
+  public init(speed: Swift.Double, rotation: ExperianMobileSDK.Rotation)
+}
+public struct Entry : Swift.Equatable {
+  public enum EntryType : Swift.Int {
+    case file
+    case directory
+    case symlink
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var fileAttributes: [Foundation.FileAttributeKey : Any] {
+    get
+  }
+  public var checksum: ExperianMobileSDK.CRC32 {
+    get
+  }
+  public var type: ExperianMobileSDK.Entry.EntryType {
+    get
+  }
+  public var compressedSize: Swift.Int {
+    get
+  }
+  public var uncompressedSize: Swift.Int {
+    get
+  }
+  public static func == (lhs: ExperianMobileSDK.Entry, rhs: ExperianMobileSDK.Entry) -> Swift.Bool
+}
+public protocol Message {
+  var data: Foundation.Data { get }
+  var base64String: Swift.String { get }
+  init(data: Foundation.Data)
+  init(base64Encoded base64String: Swift.String) throws
+}
+extension Message {
+  public var base64String: Swift.String {
+    get
+  }
+  public init(base64Encoded base64String: Swift.String) throws
+}
+public class RSACryptoMessage {
+  convenience public init(_ text: Swift.String)
+  public init(data: Foundation.Data?)
+  public func encrypt(using cryptoKey: ExperianMobileSDK.CryptoPublicKey) throws -> Foundation.Data
+  @objc deinit
+}
+public struct Rotation {
+}
+extension Rotation {
+  public init(sine: Swift.Double, cosine: Swift.Double)
+}
+extension Vector {
+  public func rotated(by rotation: ExperianMobileSDK.Rotation) -> ExperianMobileSDK.Vector
+}
+public class ObfuscatedDecrypter {
+  @objc deinit
+}
+public struct EncryptedModel {
+  public init()
+  public func encrypt(data: Foundation.Data) throws -> ExperianMobileSDK.EncryptedContent
+  public func encrypt(file: ExperianMobileSDK.File?) throws -> ExperianMobileSDK.EncryptedContent
+  public func createEncryptedInfo(payload: Swift.String?) throws -> ExperianMobileSDK.EncryptedContent
+}
+public class AESCryptoMessage {
+  public var dataText: Foundation.Data {
+    get
+  }
+  public init(_ text: Swift.String)
+  public init(data: Foundation.Data?)
+  convenience public init?(base64Data: Foundation.Data)
+  convenience public init?(base64String: Swift.String)
+  public func encrypt(key: Swift.String, iv: Swift.String) -> Foundation.Data?
+  public func encrypt(keyData: Foundation.Data, ivData: Foundation.Data) -> Foundation.Data?
+  public func decrypt(keyData: Foundation.Data, ivData: Foundation.Data) -> Foundation.Data?
+  public func decrypt(key: Swift.String, iv: Swift.String) -> Foundation.Data?
+  public func twoWayEncrypt(password: Swift.String, iv: Swift.String? = nil, salt: Swift.String? = nil) -> Foundation.Data?
+  public func twoWayDecrypt(password: Swift.String, iv: Swift.String? = nil, salt: Swift.String? = nil) -> Foundation.Data?
+  @objc deinit
+}
+public enum Thing : Swift.Int, Swift.Decodable {
+  case nothing
+  case player
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct Renderer {
+  public var bitmap: ExperianMobileSDK.Bitmap {
+    get
+    }
+  public init(width: Swift.Int, height: Swift.Int, textures: ExperianMobileSDK.Textures)
+}
+extension Renderer {
+  mutating public func draw(_ world: ExperianMobileSDK.World)
+}
+public struct DeviceInfo : ExperianMobileSDK.Serializable {
+  public var board: Swift.String?
+  public var brand: Swift.String?
+  public var cores: Swift.Int?
+  public var manufacturer: Swift.String?
+  public var model: Swift.String?
+  public var ram: Swift.Int?
+  public var upTime: Swift.String?
+  public var vendorIdentifier: Swift.String?
+  public var systemName: Swift.String?
+  public var systemVersion: Swift.String?
+  public var modelIdentifier: Swift.String?
+  public var localizedModel: Swift.String?
+  public var batteryStatus: Swift.String?
+  public var batteryLevel: Swift.Int?
+  public var totalSpace: Swift.String?
+  public var usedSpace: Swift.String?
+  public var fingerprint: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Array {
+  public subscript(safeIndex index: Swift.Int) -> Element? {
+    get
+  }
+}
+extension String {
+  public func plain() -> Swift.String
+}
+public enum Texture : Swift.String, Swift.CaseIterable {
+  case wall, wall2
+  case crackWall, crackWall2
+  case slimeWall, slimeWall2
+  case floor
+  case crackFloor
+  case ceiling
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [ExperianMobileSDK.Texture]
+  public static var allCases: [ExperianMobileSDK.Texture] {
+    get
+  }
+}
+public struct Textures {
+}
+extension Textures {
+  public init(loader: (Swift.String) -> ExperianMobileSDK.Bitmap)
+  public subscript(texture: ExperianMobileSDK.Texture) -> ExperianMobileSDK.Bitmap {
+    get
+  }
+}
+public enum SwiftyRSAError : Swift.Error {
+  case pemDoesNotContainKey
+  case keyRepresentationFailed(error: CoreFoundation.CFError?)
+  case keyGenerationFailed(error: CoreFoundation.CFError?)
+  case keyCreateFailed(error: CoreFoundation.CFError?)
+  case keyAddFailed(status: Darwin.OSStatus)
+  case keyCopyFailed(status: Darwin.OSStatus)
+  case tagEncodingFailed
+  case asn1ParsingFailed
+  case invalidAsn1RootNode
+  case invalidAsn1Structure
+  case invalidBase64String
+  case chunkDecryptFailed(index: Swift.Int)
+  case chunkEncryptFailed(index: Swift.Int)
+  case stringToDataConversionFailed
+  case dataToStringConversionFailed
+  case invalidDigestSize(digestSize: Swift.Int, maxChunkSize: Swift.Int)
+  case signatureCreateFailed(status: Darwin.OSStatus)
+  case signatureVerifyFailed(status: Darwin.OSStatus)
+  case pemFileNotFound(name: Swift.String)
+  case derFileNotFound(name: Swift.String)
+  case notAPublicKey
+  case notAPrivateKey
+}
+public struct CompressionLevel : Swift.RawRepresentable {
+  public let rawValue: Swift.Int32
+  public static let noCompression: ExperianMobileSDK.CompressionLevel
+  public static let bestSpeed: ExperianMobileSDK.CompressionLevel
+  public static let bestCompression: ExperianMobileSDK.CompressionLevel
+  public static let defaultCompression: ExperianMobileSDK.CompressionLevel
+  public init(rawValue: Swift.Int32)
+  public init(_ rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+}
+public struct GzipError : Swift.Error {
+  public enum Kind : Swift.Equatable {
+    case stream
+    case data
+    case memory
+    case buffer
+    case version
+    case unknown(code: Swift.Int)
+    public static func == (a: ExperianMobileSDK.GzipError.Kind, b: ExperianMobileSDK.GzipError.Kind) -> Swift.Bool
+  }
+  public let kind: ExperianMobileSDK.GzipError.Kind
+  public let message: Swift.String
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+extension Data {
+  public var isGzipped: Swift.Bool {
+    get
+  }
+  public func gzipped(level: ExperianMobileSDK.CompressionLevel = .defaultCompression) throws -> Foundation.Data
+  public func gunzipped() throws -> Foundation.Data
+}
+public class Signature {
+  public enum DigestType {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public static func == (a: ExperianMobileSDK.Signature.DigestType, b: ExperianMobileSDK.Signature.DigestType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  final public let data: Foundation.Data
+  public init(data: Foundation.Data)
+  convenience public init(base64Encoded base64String: Swift.String) throws
+  public var base64String: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public protocol Key : AnyObject {
+  var reference: Security.SecKey { get }
+  var originalData: Foundation.Data? { get }
+  init(data: Foundation.Data) throws
+  init(reference: Security.SecKey) throws
+  init(base64Encoded base64String: Swift.String) throws
+  init(pemEncoded pemString: Swift.String) throws
+  init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
+  init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
+  func pemString() throws -> Swift.String
+  func data() throws -> Foundation.Data
+  func base64String() throws -> Swift.String
+}
+extension Key {
+  public func base64String() throws -> Swift.String
+  public func data() throws -> Foundation.Data
+  public init(base64Encoded base64String: Swift.String) throws
+  public init(pemEncoded pemString: Swift.String) throws
+  public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
+  public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
+}
+public protocol SerializeEncodable : Swift.Encodable {
+  func serialize() -> Swift.String?
+}
+extension SerializeEncodable {
+  public func serialize() -> Swift.String?
+}
+public protocol SerializeDecodable : Swift.Decodable {
+  init?(jsonString: Swift.String)
+}
+extension SerializeDecodable {
+  public init?(jsonString: Swift.String)
+}
+public typealias Serializable = ExperianMobileSDK.SerializeEncodable & ExperianMobileSDK.SerializeDecodable & Swift.Codable
+public struct Color {
+  public var r: Swift.UInt8, g: Swift.UInt8, b: Swift.UInt8, a: Swift.UInt8
+  public init(r: Swift.UInt8, g: Swift.UInt8, b: Swift.UInt8, a: Swift.UInt8 = 255)
+}
+extension Color {
+  public static let clear: ExperianMobileSDK.Color
+  public static let black: ExperianMobileSDK.Color
+  public static let white: ExperianMobileSDK.Color
+  public static let gray: ExperianMobileSDK.Color
+  public static let red: ExperianMobileSDK.Color
+  public static let green: ExperianMobileSDK.Color
+  public static let blue: ExperianMobileSDK.Color
+}
+public class Device : ExperianMobileSDK.Serializable {
+  public init()
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public struct Vector {
+  public var x: Swift.Double, y: Swift.Double
+  public init(x: Swift.Double, y: Swift.Double)
+}
+extension Vector {
+  public static var zero: ExperianMobileSDK.Vector {
+    get
+  }
+  public static var one: ExperianMobileSDK.Vector {
+    get
+  }
+  public var length: Swift.Double {
+    get
+  }
+  public var orthogonal: ExperianMobileSDK.Vector {
+    get
+  }
+  public static func + (lhs: ExperianMobileSDK.Vector, rhs: ExperianMobileSDK.Vector) -> ExperianMobileSDK.Vector
+  public static func - (lhs: ExperianMobileSDK.Vector, rhs: ExperianMobileSDK.Vector) -> ExperianMobileSDK.Vector
+  public static func * (lhs: ExperianMobileSDK.Vector, rhs: Swift.Double) -> ExperianMobileSDK.Vector
+  public static func / (lhs: ExperianMobileSDK.Vector, rhs: Swift.Double) -> ExperianMobileSDK.Vector
+  public static func * (lhs: Swift.Double, rhs: ExperianMobileSDK.Vector) -> ExperianMobileSDK.Vector
+  public static func / (lhs: Swift.Double, rhs: ExperianMobileSDK.Vector) -> ExperianMobileSDK.Vector
+  public static func += (lhs: inout ExperianMobileSDK.Vector, rhs: ExperianMobileSDK.Vector)
+  public static func -= (lhs: inout ExperianMobileSDK.Vector, rhs: ExperianMobileSDK.Vector)
+  public static func *= (lhs: inout ExperianMobileSDK.Vector, rhs: Swift.Double)
+  public static func /= (lhs: inout ExperianMobileSDK.Vector, rhs: Swift.Double)
+  prefix public static func - (rhs: ExperianMobileSDK.Vector) -> ExperianMobileSDK.Vector
+}
+public enum CryptoError : Swift.Error, Foundation.LocalizedError {
+  case emptyKey
+  case invalidKeyString
+  case keyCreationFail(error: Swift.String)
+  case encryptFail(error: Swift.String)
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+infix operator ~^ : DefaultPrecedence
+@objc public class EXSharedData : ObjectiveC.NSObject {
+  @objc(sharedInstance) public static let shared: ExperianMobileSDK.EXSharedData
+  @objc public var sharedValues: [Swift.String : Swift.String] {
+    @objc get
+  }
+  @objc public var partnerCode: Swift.String
+  @objc public var clientCode: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc public func refresh()
+  @objc public func setCustomField(key: Swift.String?, value: Swift.String?, hashed: Swift.Bool = true)
+  @objc public func getCustomField(key: Swift.String) -> Swift.String
+  @objc public func removeField(key: Swift.String)
+  @objc deinit
+}
+public struct Tilemap : Swift.Decodable {
+  public let width: Swift.Int
+  public let things: [ExperianMobileSDK.Thing]
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Tilemap {
+  public var height: Swift.Int {
+    get
+  }
+  public var size: ExperianMobileSDK.Vector {
+    get
+  }
+  public subscript(x: Swift.Int, y: Swift.Int) -> ExperianMobileSDK.Tile {
+    get
+  }
+  public func hitTest(_ ray: ExperianMobileSDK.Ray) -> ExperianMobileSDK.Vector
+  public func tile(at position: ExperianMobileSDK.Vector, from direction: ExperianMobileSDK.Vector) -> ExperianMobileSDK.Tile
+}
+public enum Tile : Swift.Int, Swift.Decodable {
+  case floor
+  case wall
+  case crackWall
+  case slimeWall
+  case crackFloor
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension Tile {
+  public var isWall: Swift.Bool {
+    get
+  }
+  public var textures: [ExperianMobileSDK.Texture] {
+    get
+  }
+}
+public struct Player {
+  public var position: ExperianMobileSDK.Vector
+  public var velocity: ExperianMobileSDK.Vector
+  public let radius: Swift.Double
+  public let speed: Swift.Double
+  public let turningSpeed: Swift.Double
+  public var direction: ExperianMobileSDK.Vector
+  public init(position: ExperianMobileSDK.Vector)
+}
+extension Player {
+  mutating public func update(timeStep: Swift.Double)
+}
+@objc public class EXMobileSDK : ObjectiveC.NSObject {
+  @objc(sdkVersion) public static var version: Swift.Int {
+    @objc get
+  }
+  public static var propertyFilePath: Swift.String {
+    get
+  }
+  public static var lightCollectorLastExecution: Swift.String {
+    get
+  }
+  public static var heavyCollectorLastExecution: Swift.String {
+    get
+  }
+  public static var senderCollectorLastExecution: Swift.String {
+    get
+  }
+  @objc public static func userAcceptedTC()
+  @objc public static func userRejectedTC()
+  @objc deinit
+  @objc public static func run(application: UIKit.UIApplication)
+  @objc public static func execute()
+  @objc public static func backgroundFecth(completion: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)? = nil)
+  @objc public static func executeInstant()
+}
+extension FileManager {
+  public func zipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, shouldKeepParent: Swift.Bool = true, compressionMethod: ExperianMobileSDK.CompressionMethod = .none, progress: Foundation.Progress? = nil) throws
+  public func unzipItem(at sourceURL: Foundation.URL, to destinationURL: Foundation.URL, progress: Foundation.Progress? = nil) throws
+}
+public struct UploadContent : ExperianMobileSDK.Serializable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public typealias CRC32 = Swift.UInt32
+public typealias Consumer = (Foundation.Data) throws -> Swift.Void
+public typealias Provider = (Swift.Int, Swift.Int) throws -> Foundation.Data
+public let crcTable: [Swift.UInt32]
+extension Data {
+  @inline(__always) public func crc32(checksum: ExperianMobileSDK.CRC32) -> ExperianMobileSDK.CRC32
+}
+extension Archive {
+  final public func extract(_ entry: ExperianMobileSDK.Entry, to url: Foundation.URL, bufferSize: Swift.UInt32 = defaultReadChunkSize, progress: Foundation.Progress? = nil) throws -> ExperianMobileSDK.CRC32
+  final public func extract(_ entry: ExperianMobileSDK.Entry, bufferSize: Swift.UInt32 = defaultReadChunkSize, progress: Foundation.Progress? = nil, consumer: (Foundation.Data) throws -> Swift.Void) throws -> ExperianMobileSDK.CRC32
+}
+public struct EncryptedContent : ExperianMobileSDK.Serializable {
+  public var content: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public typealias Padding = Security.SecPadding
+extension CFString : Swift.Hashable {
+  public var hashValue: Swift.Int {
+    get
+  }
+  public static func == (lhs: CoreFoundation.CFString, rhs: CoreFoundation.CFString) -> Swift.Bool
+}
+public enum SwiftyRSA {
+}
+public class CryptoPublicKey {
+  final public let referenceKey: ExperianMobileSDK.PublicKey!
+  public var key: Security.SecKey {
+    get
+  }
+  public init(pemString: Swift.String) throws
+  @objc deinit
+}
+public struct CryptoUtils {
+  public static func generateAESPassword() -> Foundation.Data
+  public static func generateIV() -> Foundation.Data
+  public static func encodeSHA256(_ string: Swift.String) -> Swift.String
+  public static func encodeSHA256(_ data: Foundation.Data) -> Swift.String
+  public static func hmac256Hash(_ string: Swift.String) -> Swift.String
+  public func aesOperation(operationType: Swift.Int, data: Foundation.Data, keyData: Foundation.Data, ivData: Foundation.Data) -> Foundation.Data?
+}
+public class PublicKey : ExperianMobileSDK.Key {
+  final public let reference: Security.SecKey
+  final public let originalData: Foundation.Data?
+  public func pemString() throws -> Swift.String
+  required public init(reference: Security.SecKey) throws
+  required public init(data: Foundation.Data) throws
+  public static func publicKeys(pemEncoded pemString: Swift.String) -> [ExperianMobileSDK.PublicKey]
+  @objc deinit
+}
+public struct World {
+  public var player: ExperianMobileSDK.Player!
+  public let map: ExperianMobileSDK.Tilemap
+  public init(map: ExperianMobileSDK.Tilemap)
+}
+extension World {
+  public var size: ExperianMobileSDK.Vector {
+    get
+  }
+  mutating public func update(timeStep: Swift.Double, input: ExperianMobileSDK.Input)
+}
+public enum ZipError : Swift.Error {
+  case fileNotFound
+  case unzipFail
+  case zipFail
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: ExperianMobileSDK.ZipError, b: ExperianMobileSDK.ZipError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public class Zip {
+  public init()
+  public class func quickZipFiles(_ paths: [Foundation.URL], fileName: Swift.String) throws -> Foundation.URL
+  @objc deinit
+}
+public struct File {
+}
+extension File : Swift.Equatable, Swift.Hashable {
+  public var hashValue: Swift.Int {
+    get
+  }
+  public static func == (lhs: ExperianMobileSDK.File, rhs: ExperianMobileSDK.File) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum LogTag : Swift.String {
+  case collector
+  case zipper
+  case scheduler
+  case sdk
+  case helper
+  case sender
+  case config
+  case storage
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+}
+extension ExperianMobileSDK.SensitiveDataPolicy : Swift.Equatable {}
+extension ExperianMobileSDK.SensitiveDataPolicy : Swift.Hashable {}
+extension ExperianMobileSDK.SensitiveDataPolicy : Swift.RawRepresentable {}
+extension ExperianMobileSDK._objc_Signature.DigestType : Swift.Equatable {}
+extension ExperianMobileSDK._objc_Signature.DigestType : Swift.Hashable {}
+extension ExperianMobileSDK._objc_Signature.DigestType : Swift.RawRepresentable {}
+extension ExperianMobileSDK.LogLevel : Swift.Equatable {}
+extension ExperianMobileSDK.LogLevel : Swift.Hashable {}
+extension ExperianMobileSDK.LogLevel : Swift.RawRepresentable {}
+extension ExperianMobileSDK.CompressionMethod : Swift.Equatable {}
+extension ExperianMobileSDK.CompressionMethod : Swift.Hashable {}
+extension ExperianMobileSDK.CompressionMethod : Swift.RawRepresentable {}
+extension ExperianMobileSDK.Archive.ArchiveError : Swift.Equatable {}
+extension ExperianMobileSDK.Archive.ArchiveError : Swift.Hashable {}
+extension ExperianMobileSDK.Archive.AccessMode : Swift.Hashable {}
+extension ExperianMobileSDK.Archive.AccessMode : Swift.RawRepresentable {}
+extension ExperianMobileSDK.Entry.EntryType : Swift.Hashable {}
+extension ExperianMobileSDK.Entry.EntryType : Swift.RawRepresentable {}
+extension ExperianMobileSDK.Thing : Swift.Equatable {}
+extension ExperianMobileSDK.Thing : Swift.Hashable {}
+extension ExperianMobileSDK.Thing : Swift.RawRepresentable {}
+extension ExperianMobileSDK.Texture : Swift.Hashable {}
+extension ExperianMobileSDK.Texture : Swift.RawRepresentable {}
+extension ExperianMobileSDK.Signature.DigestType : Swift.Equatable {}
+extension ExperianMobileSDK.Signature.DigestType : Swift.Hashable {}
+extension ExperianMobileSDK.Tile : Swift.Hashable {}
+extension ExperianMobileSDK.Tile : Swift.RawRepresentable {}
+extension ExperianMobileSDK.ZipError : Swift.Equatable {}
+extension ExperianMobileSDK.ZipError : Swift.Hashable {}
+extension ExperianMobileSDK.LogTag : Swift.Equatable {}
+extension ExperianMobileSDK.LogTag : Swift.Hashable {}
+extension ExperianMobileSDK.LogTag : Swift.RawRepresentable {}
